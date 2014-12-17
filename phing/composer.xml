@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <target name="composer.install" depends="composer.get-latest">
+        <exec command="php composer.phar install" passthru="true" />
+    </target>
+    
+    <target name="composer.get-latest">
+        <if>
+            <available file="composer.phar" type="file" />
+            <then>
+                <phingcall target="composer.self-update" />
+            </then>
+            <else>
+                <phingcall target="composer.download-from-origin" />
+            </else>
+        </if>
+    </target>
+    
+    <target name="composer.download-from-origin">
+        <exec command="curl -s http://getcomposer.org/installer | php" passthru="true" />
+    </target>
+    
+    <target name="composer.self-update">
+        <exec command="php composer.phar self-update" passthru="true" />
+    </target>
+</project>
