@@ -1,1 +1,6 @@
+/bin/
+/vendor/
 /.project
+/composer.lock
+/composer.phar
+/phing.phar
