@@ -20,4 +20,4 @@ then
     rm $temporaryPhing
 fi
 
-$phing "$@"
+exec $phing "$@"

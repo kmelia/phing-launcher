@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="help">
+    <import file="phing/composer.xml" />
+    <import file="phing/phing-launcher.xml" />
+    
+    <target name="help">
+        <echo>Available tasks :
+      - phing-launcher.self-update
+      - composer.install
+        </echo>
+        <echo>Tip no color : phing -logger phing.listener.DefaultLogger</echo>
+    </target>
+</project>
