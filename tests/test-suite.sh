@@ -2,7 +2,6 @@
 
 phingWithComposer=./bin/phing
 phingWithPhar=./phing.phar
-phingLauncher=./phing.sh
 
 echo "Launch test suite:"
 

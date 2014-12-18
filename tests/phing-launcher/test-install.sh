@@ -16,7 +16,7 @@ then
     exit 1
 fi
 
-$phingLauncher composer.install &> /dev/null
+sh phing.sh composer.install &> /dev/null
 
 if [ ! -f $phingWithPhar ]
 then
@@ -32,7 +32,7 @@ then
     exit 1
 fi
 
-$phingLauncher composer.install > /dev/null
+sh phing.sh composer.install > /dev/null
 
 if [ -f $phingWithPhar ]
 then

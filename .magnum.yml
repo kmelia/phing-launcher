@@ -12,6 +12,6 @@ install:
 #before_script:
 
 script:
-  - ./tests/test-suite.sh
+  - sh tests/test-suite.sh
 
 #after_script:
