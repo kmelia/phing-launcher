@@ -15,7 +15,7 @@ I explain the magic trick:
 
 Getting started
 ---------------
-**1.** Modify your ``composer.json`` file, to require Phing by [Composer][3] :
+**1.** Modify your ``composer.json`` file, to require Phing by [Composer][3]:
 
 - add ``phing/phing`` dependency to the require section,
 ```json
@@ -35,8 +35,25 @@ Getting started
 curl -O https://bitbucket.org/kmelia/phing-launcher/raw/master/phing.sh
 ```
 
+**3.** Run the Phing Launcher script instead of Phing.
+```bash
+./phing.sh
+```
+
+Get the classics
+----------------
+
+You can try the several configurations available into the [``phing/``][5] directory, like:
+
+- ``phing/composer.xml`` provides the complete usage of [Composer][3] (including the download),
+- ``phing/phing-launcher.xml`` provides a self update of the [Phing Launcher][1].
+
+See the [``build.xml``][6] Phing configuration file for more explanations.
+
 
   [1]: https://bitbucket.org/kmelia/phing-launcher
   [2]: http://www.phing.info/
   [3]: http://getcomposer.org/
   [4]: https://bitbucket.org/kmelia/phing-launcher/raw/master/phing.sh
+  [5]: https://bitbucket.org/kmelia/phing-launcher/raw/master/phing/
+  [6]: https://bitbucket.org/kmelia/phing-launcher/raw/master/build.xml
