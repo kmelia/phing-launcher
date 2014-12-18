@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
     <target name="composer.install" depends="composer.get-latest">
-        <exec command="php composer.phar install --prefer-dist" passthru="true" />
+        <exec command="php composer.phar install --prefer-dist" passthru="true" level="info" />
     </target>
     
     <target name="composer.update" depends="composer.get-latest">
-        <exec command="php composer.phar update --prefer-dist" passthru="true" />
+        <exec command="php composer.phar update --prefer-dist" passthru="true" level="info" />
     </target>
     
     <target name="composer.get-latest">
@@ -21,10 +21,10 @@
     </target>
     
     <target name="composer.download-from-origin">
-        <exec command="curl -s http://getcomposer.org/installer | php" passthru="true" />
+        <exec command="curl -s http://getcomposer.org/installer | php" passthru="true" level="info" />
     </target>
     
     <target name="composer.self-update">
-        <exec command="php composer.phar self-update" passthru="true" />
+        <exec command="php composer.phar self-update" passthru="true" level="info" />
     </target>
 </project>
