@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <property name="phing-launcher.url" value="https://bitbucket.org/kmelia/phing-launcher" />
+    <property name="phing-launcher.script" value="phing.sh" />
+    
+    <target name="phing-launcher.self-update">
+        <echo>Download the script "${phing-launcher.script}" from the repository ${phing-launcher.url}.</echo>
+        <exec command="curl -s -O ${phing-launcher.url}/raw/master/${phing-launcher.script}" passthru="true" />
+    </target>
+</project>
