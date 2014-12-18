@@ -1,5 +1,6 @@
 Phing Launcher
 ==============
+[![Build Status](https://magnum-ci.com/status/d45e5c1cd0f262cd979a181e1bb3824a.png)](https://magnum-ci.com/public/c7a879a60911b99081cc/builds)
 
 **Provides a [launcher][1] to run [Phing][2] without Phing.** 
 
