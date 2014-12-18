@@ -8,7 +8,7 @@ then
     if [ ! -f $temporaryPhing ]
     then
         echo ">> download $temporaryPhing from origin"
-        curl -o $temporaryPhing http://www.phing.info/get/phing-latest.phar
+        curl -s -o $temporaryPhing http://www.phing.info/get/phing-latest.phar
         if [ ! -f $temporaryPhing ]
         then
             echo "[error] Unable to download the file."
