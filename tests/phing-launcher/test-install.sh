@@ -1,46 +1,41 @@
 #!/bin/sh
 
-echo -n " > Test installing and downloading Phing: "
+echo "[start] Test installing and downloading Phing ..."
 
 if [ -f $phingWithPhar ]
 then
-    echo "KO"
     echo "Unable to test if $phingWithPhar is already here."
-    exit 1
+    exitOnFail
 fi
 
 if [ -f $phingWithComposer ]
 then
-    echo "KO"
     echo "Unable to test if $phingWithComposer is already here."
-    exit 1
+    exitOnFail
 fi
 
-sh phing.sh composer.install &> /dev/null
+sh phing.sh -logger phing.listener.DefaultLogger composer.install 2>&1 >> $logFile
 
 if [ ! -f $phingWithPhar ]
 then
-    echo "KO"
     echo "Unable to get $phingWithPhar on curl download."
-    exit 1
+    exitOnFail
 fi
 
 if [ ! -f $phingWithComposer ]
 then
-    echo "KO"
     echo "Unable to get $phingWithComposer on Composer."
-    exit 1
+    exitOnFail
 fi
 
-sh phing.sh composer.install > /dev/null
+sh phing.sh -logger phing.listener.DefaultLogger composer.install 2>&1 >> $logFile
 
 if [ -f $phingWithPhar ]
 then
-    echo "KO"
     echo "Unable to remove $phingWithPhar after getting $phingWithComposer."
-    exit 1
+    exitOnFail
 fi
 
-echo "OK"
+echo "[end] OK"
 
 exit 0
