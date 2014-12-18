@@ -15,21 +15,25 @@ I explain the magic trick:
 
 Getting started
 ---------------
-**1.** Install Phing by [Composer][3], add ``phing/phing`` dependency to the require section of your ``composer.json`` file:
+**1.** Modify your ``composer.json`` file, to require Phing by [Composer][3] :
+
+- add ``phing/phing`` dependency to the require section,
 ```json
 "require": {
     "phing/phing": "2.*"
 }
 ```
-
-**2.** Do not forget to add the bin directory configuration: 
+- do not forget to add the bin directory to the configuration section.
 ```json
 "config": {
     "bin-dir": "bin"
 }
 ```
 
-**3.** Download the [Phing Launcher script][4] into your project (near ``composer.json``).
+**2.** Download the [Phing Launcher script][4] into your project (near ``composer.json``).
+```bash
+curl -O https://bitbucket.org/kmelia/phing-launcher/raw/master/phing.sh
+```
 
 
   [1]: https://bitbucket.org/kmelia/phing-launcher
