@@ -1,0 +1,17 @@
+# Magnum CI: Hosted Continuous Integration Platform
+# https://magnum-ci.com
+
+before_install:
+  # explicit Composer configuration for Magnum CI
+  - export COMPOSER_CACHE_DIR=.composer-cache/
+  - composer config github-oauth.github.com $githubToken
+
+install:
+  - echo "do not install anything yet"
+
+#before_script:
+
+script:
+  - ./tests/test-suite.sh
+
+#after_script:
