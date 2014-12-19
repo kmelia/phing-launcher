@@ -37,5 +37,3 @@ then
 fi
 
 echo "[end] OK"
-
-exit 0
