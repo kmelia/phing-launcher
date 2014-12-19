@@ -2,11 +2,13 @@
 <project default="help">
     <import file="phing/composer.xml" />
     <import file="phing/phing-launcher.xml" />
+    <import file="phing/phpunit.xml" />
     
     <target name="help">
         <echo>Available tasks :
-      - phing-launcher.self-update
-      - composer.install
+      - phing-launcher.self-update : self update the Phing Launcher script.
+      - composer.install           : installs the project dependencies with Composer.
+      - phpunit.only-runs-tests    : run the PHPUnit tests.
         </echo>
         <echo>Tip no color : phing -logger phing.listener.DefaultLogger</echo>
     </target>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <import file="phing/composer.xml" />
+    
+    <target name="phpunit.only-runs-tests" depends="composer.install">
+        <exec command="env ./bin/phpunit -c app/" passthru="true" checkreturn="true" level="info" />
+    </target>
+</project>
