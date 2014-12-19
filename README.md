@@ -6,8 +6,8 @@ Phing Launcher
 
 Because we want:
 
-- to get and run [Composer][3] with a Phing command,
-- to install [Phing][2] binaries with Composer.
+- to get and run [composer.phar][3] with a Phing command,
+- to install [Phing][2] dependency with Composer.
 
 I explain the magic trick:
 
