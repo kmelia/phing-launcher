@@ -3,9 +3,9 @@
 phing=./bin/phing
 temporaryPhing=./phing.phar
 
-if [ ! -f $phing ]
+if [ ! -s $phing ]
 then
-    if [ ! -f $temporaryPhing ]
+    if [ ! -s $temporaryPhing ]
     then
         echo ">> download $temporaryPhing from origin"
         curl -s -o $temporaryPhing http://www.phing.info/get/phing-latest.phar
