@@ -3,8 +3,15 @@
 phing=./bin/phing
 temporaryPhing=./phing.phar
 
+# if file not exists or file has not a size greater than zero.
 if [ ! -s $phing ]
 then
+    if [ -e $phing ]
+    then
+        echo ">> remove invalid file $phing (size equals zero)"
+        rm $phing
+    fi
+    
     if [ ! -s $temporaryPhing ]
     then
         echo ">> download $temporaryPhing from origin"
