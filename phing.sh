@@ -3,9 +3,16 @@
 phing=./bin/phing
 temporaryPhing=./phing.phar
 
-if [ ! -f $phing ]
+# if file not exists or file has not a size greater than zero.
+if [ ! -s $phing ]
 then
-    if [ ! -f $temporaryPhing ]
+    if [ -e $phing ]
+    then
+        echo ">> remove invalid file $phing (size equals zero)"
+        rm $phing
+    fi
+    
+    if [ ! -s $temporaryPhing ]
     then
         echo ">> download $temporaryPhing from origin"
         curl -s -o $temporaryPhing http://www.phing.info/get/phing-latest.phar
