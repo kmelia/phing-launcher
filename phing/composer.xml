@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
     <target name="composer.install" depends="composer.get-latest">
-        <exec command="php composer.phar install --prefer-dist" passthru="true" level="info" />
+        <exec command="php composer.phar install --prefer-dist ${composer.parameters}" passthru="true" level="info" />
     </target>
     
     <target name="composer.update" depends="composer.get-latest">
-        <exec command="php composer.phar update --prefer-dist" passthru="true" level="info" />
+        <exec command="php composer.phar update --prefer-dist ${composer.parameters}" passthru="true" level="info" />
     </target>
     
     <target name="composer.get-latest">
