@@ -2,7 +2,27 @@
 <project>
     <import file="phing/composer.xml" />
     
-    <target name="phpunit.only-runs-tests" depends="composer.install">
-        <exec command="env ./bin/phpunit -c app/" passthru="true" checkreturn="true" level="info" />
+    <target name="phpunit.run">
+        <phingcall target="phpunit.only-runs-tests" />
+    </target>
+    
+    <target name="phpunit.run.no-dependency">
+        <phingcall target="phpunit.only-runs-tests">
+            <property name="phpunit.no-composer" value="true" />
+        </phingcall>
+    </target>
+    
+    <target name="phpunit.only-runs-tests">
+        <if>
+            <not>
+                <isset property="phpunit.no-composer" />
+            </not>
+            <then>
+                <phingcall target="composer.install" />
+            </then>
+        </if>
+        
+        <exec command="env ./bin/phpunit -c app/"
+            passthru="true" checkreturn="true" level="info" />
     </target>
 </project>
