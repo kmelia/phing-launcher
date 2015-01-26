@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
-    <target name="composer.install" depends="composer.get-latest">
+    <target name="composer.install" depends="composer.check-parameters, composer.get-latest">
         <exec command="php composer.phar install --prefer-dist ${composer.parameters}" passthru="true" level="info" />
     </target>
     
-    <target name="composer.update" depends="composer.get-latest">
+    <target name="composer.update" depends="composer.check-parameters, composer.get-latest">
         <exec command="php composer.phar update --prefer-dist ${composer.parameters}" passthru="true" level="info" />
+    </target>
+    
+    <target name="composer.check-parameters">
+        <if>
+            <not>
+                <isset property="composer.parameters" />
+            </not>
+            <then>
+                <property name="composer.parameters" value="" />
+            </then>
+        </if>
     </target>
     
     <target name="composer.get-latest" hidden="true">
