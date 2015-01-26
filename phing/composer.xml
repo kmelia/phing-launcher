@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
-    <target name="composer.install" depends="composer.check-parameters, composer.get-latest">
-        <exec command="php composer.phar install --prefer-dist ${composer.parameters}" passthru="true" level="info" />
+    <target name="composer.install">
+        <phingcall target="composer.install-or-update">
+            <property name="composer.command" value="install" />
+        </phingcall>
     </target>
     
-    <target name="composer.update" depends="composer.check-parameters, composer.get-latest">
-        <exec command="php composer.phar update --prefer-dist ${composer.parameters}" passthru="true" level="info" />
+    <target name="composer.update">
+        <phingcall target="composer.install-or-update">
+            <property name="composer.command" value="update" />
+        </phingcall>
     </target>
     
-    <target name="composer.check-parameters">
+    <target name="composer.install-or-update" depends="composer.check-parameters, composer.get-latest" hidden="true">
+        <exec command="php composer.phar ${composer.command} --prefer-dist ${composer.parameters}" passthru="true" level="info" />
+    </target>
+    
+    <target name="composer.check-parameters" hidden="true">
         <if>
             <not>
                 <isset property="composer.parameters" />
