@@ -8,7 +8,7 @@
         <exec command="php composer.phar update --prefer-dist ${composer.parameters}" passthru="true" level="info" />
     </target>
     
-    <target name="composer.get-latest">
+    <target name="composer.get-latest" hidden="true">
         <if>
             <available file="composer.phar" type="file" />
             <then>
@@ -20,11 +20,11 @@
         </if>
     </target>
     
-    <target name="composer.download-from-origin">
+    <target name="composer.download-from-origin" hidden="true">
         <exec command="curl -s http://getcomposer.org/installer | php" passthru="true" level="info" />
     </target>
     
-    <target name="composer.self-update">
+    <target name="composer.self-update" hidden="true">
         <exec command="php composer.phar self-update" passthru="true" level="info" />
     </target>
 </project>

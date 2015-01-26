@@ -12,7 +12,7 @@
         </phingcall>
     </target>
     
-    <target name="phpunit.only-runs-tests">
+    <target name="phpunit.only-runs-tests" hidden="true">
         <if>
             <not>
                 <isset property="phpunit.no-composer" />
