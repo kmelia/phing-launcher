@@ -8,20 +8,25 @@
         <echo>Available tasks listed below:
         </echo>
         
-        <echo>Phing Launcher:
-      - phing-launcher.self-update             : self update the Phing Launcher script.
+        <echo level="warning">Phing Launcher:</echo>
+        <echo>phing-launcher.self-update : self update the Phing Launcher script.
         </echo>
         
-        <echo>Composer:
-      - composer.install [composer.parameters] : installs the project dependencies with Composer.
-          + allow adding parameters to the exec command
-          example : ./phing.sh composer.install -Dcomposer.parameters="--no-dev --no-scripts"
+        <echo level="warning">Composer:</echo>
+        <echo>composer.update  : updates the project dependencies with Composer.
+          + see the composer.install description.</echo>
+        <echo>composer.install : installs the project dependencies with Composer.
+          + optionals parameters:
+              [composer.parameters] : add some parameters to the command (default: "")
+              [composer.directory]  : run the command in a specific directory (default: .)
+          + example : ./phing.sh composer.install -Dcomposer.parameters="--no-dev --no-scripts"
         </echo>
         
-        <echo>PHPUnit:
-      - phpunit.run                            : run the PHPUnit tests (for Continuous Itegration).
-      - phpunit.run.no-dependency              : run the PHPUnit tests without installing all the dependencies.
+        <echo level="warning">PHPUnit:</echo>
+        <echo>phpunit.run               : run the PHPUnit tests (for Continuous Itegration).</echo>
+        <echo>phpunit.run.no-dependency : run the PHPUnit tests without installing all the dependencies.
         </echo>
+        
         <echo>Tip no color : phing -logger phing.listener.DefaultLogger</echo>
     </target>
 </project>
