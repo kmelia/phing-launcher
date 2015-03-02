@@ -14,7 +14,8 @@
         
         <echo>Composer:
       - composer.install           : installs the project dependencies with Composer.
-          [composer.parameters] : add some parameters to the command
+          [composer.parameters] : add some parameters to the command (default: "")
+          [composer.directory]  : run the command in a specific directory (default: .)
           example : ./phing.sh composer.install -Dcomposer.parameters="--no-dev --no-scripts"
       - composer.update            : updates the project dependencies with Composer.
           + see the composer.install description.

@@ -12,17 +12,26 @@
         </phingcall>
     </target>
     
-    <target name="composer.install-or-update" depends="composer.check-parameters, composer.get-latest" hidden="true">
-        <exec command="php composer.phar ${composer.command} --prefer-dist ${composer.parameters}" passthru="true" level="info" />
+    <target name="composer.install-or-update" depends="composer.check-properties, composer.get-latest" hidden="true">
+        <exec command="php composer.phar ${composer.command} --working-dir=${composer.directory} --prefer-dist ${composer.parameters}" passthru="true" level="info" />
     </target>
     
-    <target name="composer.check-parameters" hidden="true">
+    <target name="composer.check-properties" hidden="true">
         <if>
             <not>
                 <isset property="composer.parameters" />
             </not>
             <then>
                 <property name="composer.parameters" value="" />
+            </then>
+        </if>
+        
+        <if>
+            <not>
+                <isset property="composer.directory" />
+            </not>
+            <then>
+                <property name="composer.directory" value="." />
             </then>
         </if>
     </target>
