@@ -4,6 +4,11 @@
     <import file="phing/phing-launcher.xml" />
     <import file="phing/phpunit.xml" />
     
+    <!--
+    Override the default values here.
+    <property name="phpunit.configuration-directory" value="tests" />
+    -->
+    
     <target name="help">
         <echo>Available tasks listed below:
         </echo>
