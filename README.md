@@ -33,7 +33,7 @@ Getting started
 
 **2.** Download the [Phing Launcher script][4] into your project (near ``composer.json``).
 ```bash
-curl -O https://bitbucket.org/kmelia/phing-launcher/raw/master/phing.sh
+curl -sS -O https://bitbucket.org/kmelia/phing-launcher/raw/master/phing.sh
 ```
 
 **3.** Run the Phing Launcher script instead of Phing.
