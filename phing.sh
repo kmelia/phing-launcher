@@ -2,6 +2,7 @@
 
 phing=./bin/phing
 temporaryPhing=./phing.phar
+arguments="$@"
 
 # if file not exists or file has not a size greater than zero.
 if [ ! -s $phing ]
@@ -32,4 +33,32 @@ then
     rm $temporaryPhing
 fi
 
-exec $phing "$@"
+if [ "$1" = "get-the-classics" -o "$1" = "gtc" ]
+then
+    # configuration
+    repositoryUrl=https://bitbucket.org/kmelia/phing-launcher
+    configurationDirectory=phing
+
+    echo ">> getting the classics of Phing Launcher from the repository $repositoryUrl"
+    
+    if [ ! -d $configurationDirectory ]
+    then
+        mkdir $configurationDirectory
+    fi
+    
+    curl -sS -O $repositoryUrl/raw/master/build.xml \
+        && cd $configurationDirectory \
+        && curl -sS -O $repositoryUrl/raw/master/$configurationDirectory/composer.xml \
+        && curl -sS -O $repositoryUrl/raw/master/$configurationDirectory/phing-launcher.xml \
+        && curl -sS -O $repositoryUrl/raw/master/$configurationDirectory/phpunit.xml \
+        && cd - > /dev/null
+    
+    echo ">> enjoy Phing!"
+    echo 
+    echo ">> see the help below:"
+    echo
+    
+    arguments=""
+fi
+
+exec $phing $arguments

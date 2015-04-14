@@ -14,6 +14,7 @@
         </echo>
         
         <echo level="warning">Phing Launcher:</echo>
+        <echo>get-the-classics (or gtc)  : getting the classics configuration</echo>
         <echo>phing-launcher.self-update : self update the Phing Launcher script.
         </echo>
         
