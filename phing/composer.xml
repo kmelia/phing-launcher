@@ -49,7 +49,7 @@
     </target>
     
     <target name="composer.download-from-origin" hidden="true">
-        <exec command="curl -s http://getcomposer.org/installer | php" passthru="true" level="info" />
+        <exec command="curl -sS http://getcomposer.org/installer | php" passthru="true" level="info" />
     </target>
     
     <target name="composer.self-update" hidden="true">

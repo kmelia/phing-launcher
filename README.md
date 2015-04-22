@@ -33,7 +33,7 @@ Getting started
 
 **2.** Download the [Phing Launcher script][4] into your project (near ``composer.json``).
 ```bash
-curl -O https://bitbucket.org/kmelia/phing-launcher/raw/master/phing.sh
+curl -sS -O https://bitbucket.org/kmelia/phing-launcher/raw/master/phing.sh
 ```
 
 **3.** Run the Phing Launcher script instead of Phing.
@@ -47,14 +47,15 @@ Get the classics
 You can try the several configurations available into the [``phing/``][5] directory, like:
 
 - ``phing/composer.xml`` provides the complete usage of [Composer][3] (including the download),
-- ``phing/phing-launcher.xml`` provides a self update of the [Phing Launcher][1].
+- ``phing/phpunit.xml`` provides a usage of PHPunit.
 
-See the [``build.xml``][6] Phing configuration file for more explanations.
-
+Run the following command to download the classics configurations on your project:
+```bash
+./phing.sh get-the-classics
+```
 
   [1]: https://bitbucket.org/kmelia/phing-launcher
   [2]: http://www.phing.info/
   [3]: http://getcomposer.org/
   [4]: https://bitbucket.org/kmelia/phing-launcher/raw/master/phing.sh
   [5]: https://bitbucket.org/kmelia/phing-launcher/raw/master/phing/
-  [6]: https://bitbucket.org/kmelia/phing-launcher/raw/master/build.xml

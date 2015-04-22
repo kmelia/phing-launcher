@@ -22,7 +22,16 @@
             </then>
         </if>
         
-        <exec command="env ./bin/phpunit -c app/"
+        <if>
+            <not>
+                <isset property="phpunit.configuration-directory" />
+            </not>
+            <then>
+                <property name="phpunit.configuration-directory" value="app" />
+            </then>
+        </if>
+        
+        <exec command="env ./bin/phpunit -c ${phpunit.configuration-directory}"
             passthru="true" checkreturn="true" level="info" />
     </target>
 </project>

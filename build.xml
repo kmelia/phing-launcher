@@ -4,11 +4,17 @@
     <import file="phing/phing-launcher.xml" />
     <import file="phing/phpunit.xml" />
     
+    <!--
+    Override the default values here.
+    <property name="phpunit.configuration-directory" value="tests" />
+    -->
+    
     <target name="help">
         <echo>Available tasks listed below:
         </echo>
         
         <echo level="warning">Phing Launcher:</echo>
+        <echo>get-the-classics (or gtc)  : getting the classics configuration</echo>
         <echo>phing-launcher.self-update : self update the Phing Launcher script.
         </echo>
         

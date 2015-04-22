@@ -5,6 +5,6 @@
     
     <target name="phing-launcher.self-update">
         <echo>Download the script "${phing-launcher.script}" from the repository ${phing-launcher.url}.</echo>
-        <exec command="curl -s -O ${phing-launcher.url}/raw/master/${phing-launcher.script}" passthru="true" level="info" />
+        <exec command="curl -sS -O ${phing-launcher.url}/raw/master/${phing-launcher.script}" passthru="true" level="info" />
     </target>
 </project>
