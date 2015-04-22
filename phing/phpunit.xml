@@ -12,7 +12,7 @@
         </phingcall>
     </target>
     
-    <target name="phpunit.only-runs-tests" hidden="true">
+    <target name="phpunit.only-runs-tests" depends="phpunit.check-properties" hidden="true">
         <if>
             <not>
                 <isset property="phpunit.no-composer" />
@@ -22,6 +22,11 @@
             </then>
         </if>
         
+        <exec command="env ./bin/phpunit -c ${phpunit.configuration-directory} ${phpunit.parameters}"
+            passthru="true" checkreturn="true" level="info" />
+    </target>
+    
+    <target name="phpunit.check-properties" hidden="true">
         <if>
             <not>
                 <isset property="phpunit.configuration-directory" />
@@ -31,7 +36,13 @@
             </then>
         </if>
         
-        <exec command="env ./bin/phpunit -c ${phpunit.configuration-directory}"
-            passthru="true" checkreturn="true" level="info" />
+        <if>
+            <not>
+                <isset property="phpunit.parameters" />
+            </not>
+            <then>
+                <property name="phpunit.parameters" value="" />
+            </then>
+        </if>
     </target>
 </project>
