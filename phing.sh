@@ -2,7 +2,6 @@
 
 phing=./bin/phing
 temporaryPhing=./phing.phar
-arguments="$@"
 
 # if file not exists or file has not a size greater than zero.
 if [ ! -s $phing ]
@@ -58,7 +57,7 @@ then
     echo ">> see the help below:"
     echo
     
-    arguments=""
+    exec $phing
 fi
 
-exec $phing $arguments
+exec $phing "$@"
