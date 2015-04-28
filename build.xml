@@ -29,7 +29,7 @@
         </echo>
         
         <echo level="warning">PHPUnit:</echo>
-        <echo>phpunit.run               : run the PHPUnit tests (for Continuous Itegration).</echo>
+        <echo>phpunit.run               : run the PHPUnit tests (for Continuous Integration).</echo>
         <echo>phpunit.run.no-dependency : run the PHPUnit tests without installing all the dependencies.
         </echo>
         
