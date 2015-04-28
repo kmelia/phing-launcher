@@ -1,7 +1,11 @@
 #!/bin/sh
 
+# configuration
 phing=./bin/phing
 temporaryPhing=./phing.phar
+repositoryUrl=https://bitbucket.org/kmelia/phing-launcher
+configurationDirectory=phing
+phingLauncher=phing.sh
 
 # if file not exists or file has not a size greater than zero.
 if [ ! -s $phing ]
@@ -32,12 +36,17 @@ then
     rm $temporaryPhing
 fi
 
+showTheHelpAndExit() {
+    echo ">> enjoy Phing!"
+    echo
+    echo ">> see the help below:"
+    echo
+    
+    exec $phing
+}
+
 if [ "$1" = "get-the-classics" -o "$1" = "gtc" ]
 then
-    # configuration
-    repositoryUrl=https://bitbucket.org/kmelia/phing-launcher
-    configurationDirectory=phing
-
     echo ">> getting the classics of Phing Launcher from the repository $repositoryUrl"
     
     if [ ! -d $configurationDirectory ]
@@ -48,16 +57,19 @@ then
     curl -sS -O $repositoryUrl/raw/master/build.xml \
         && cd $configurationDirectory \
         && curl -sS -O $repositoryUrl/raw/master/$configurationDirectory/composer.xml \
-        && curl -sS -O $repositoryUrl/raw/master/$configurationDirectory/phing-launcher.xml \
         && curl -sS -O $repositoryUrl/raw/master/$configurationDirectory/phpunit.xml \
         && cd - > /dev/null
     
-    echo ">> enjoy Phing!"
-    echo 
-    echo ">> see the help below:"
-    echo
+    showTheHelpAndExit
+fi
+
+if [ "$1" = "self-update" ]
+then
+    echo ">> updating the Phing Launcher script from the repository $repositoryUrl"
     
-    exec $phing
+    curl -sS -O $repositoryUrl/raw/master/$phingLauncher
+    
+    showTheHelpAndExit
 fi
 
 exec $phing "$@"
