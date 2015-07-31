@@ -12,13 +12,13 @@ if [ ! -s $phing ]
 then
     if [ -e $phing ]
     then
-        echo ">> remove invalid file $phing (size equals zero)"
+        echo ">> removing invalid file $phing (size equals zero)"
         rm $phing
     fi
     
     if [ ! -s $temporaryPhing ]
     then
-        echo ">> download $temporaryPhing from origin"
+        echo ">> downloading $temporaryPhing from origin"
         curl -sS -o $temporaryPhing http://www.phing.info/get/phing-latest.phar
         if [ ! -f $temporaryPhing ]
         then
@@ -27,12 +27,12 @@ then
         fi
     fi
     
-    echo ">> use $temporaryPhing instead of $phing"
+    echo ">> using $temporaryPhing instead of $phing"
     phing="php $temporaryPhing"
     
 elif [ -f $temporaryPhing ]
 then
-    echo ">> remove $temporaryPhing, phing already exists in $phing"
+    echo ">> removing $temporaryPhing, phing already exists in $phing"
     rm $temporaryPhing
 fi
 
