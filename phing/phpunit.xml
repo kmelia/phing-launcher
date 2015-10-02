@@ -32,7 +32,7 @@
                 <isset property="phpunit.configuration-directory" />
             </not>
             <then>
-                <property name="phpunit.configuration-directory" value="app" />
+                <property name="phpunit.configuration-directory" value="tests" />
             </then>
         </if>
         
