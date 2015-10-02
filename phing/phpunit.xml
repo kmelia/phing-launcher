@@ -22,8 +22,16 @@
             </then>
         </if>
         
-        <exec command="env ./bin/phpunit -c ${phpunit.configuration-directory} ${phpunit.parameters}"
-            passthru="true" checkreturn="true" level="info" />
+        <if>
+            <isset property="phpunit.clear-cache-target" />
+            <then>
+                <phingcall target="${phpunit.clear-cache-target}" />
+            </then>
+        </if>
+        
+        <phingcall target="phing.run-command">
+            <property name="phing.command-name" value="env ./bin/phpunit -c ${phpunit.configuration-directory} ${phpunit.parameters}" />
+        </phingcall>
     </target>
     
     <target name="phpunit.check-properties" hidden="true">
@@ -32,7 +40,7 @@
                 <isset property="phpunit.configuration-directory" />
             </not>
             <then>
-                <property name="phpunit.configuration-directory" value="app" />
+                <property name="phpunit.configuration-directory" value="tests" />
             </then>
         </if>
         

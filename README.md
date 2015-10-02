@@ -1,6 +1,6 @@
 Phing Launcher
 ==============
-[![Build Status](https://magnum-ci.com/status/d45e5c1cd0f262cd979a181e1bb3824a.png)](https://magnum-ci.com/public/c7a879a60911b99081cc/builds)
+[![Build Status](https://magnum-ci.com/status/d45e5c1cd0f262cd979a181e1bb3824a.png?branch=develop)](https://magnum-ci.com/public/c7a879a60911b99081cc/builds)
 
 **Provides a [launcher][1] to run [Phing][2] without Phing.** 
 
@@ -47,7 +47,8 @@ Get the classics
 You can try the several configurations available into the [``phing/``][5] directory, like:
 
 - ``phing/composer.xml`` provides the complete usage of [Composer][3] (including the download),
-- ``phing/phpunit.xml`` provides a usage of PHPunit.
+- ``phing/phpunit.xml`` provides a usage of PHPunit,
+- ``phing/symfony.xml`` provides a usage of [Symfony][6].
 
 Run the following command to download the classics configurations on your project:
 ```bash
@@ -59,3 +60,4 @@ Run the following command to download the classics configurations on your projec
   [3]: http://getcomposer.org/
   [4]: https://bitbucket.org/kmelia/phing-launcher/raw/master/phing.sh
   [5]: https://bitbucket.org/kmelia/phing-launcher/raw/master/phing/
+  [6]: https://bitbucket.org/kmelia/fresh-symfony
