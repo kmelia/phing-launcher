@@ -7,6 +7,7 @@
     <!--
     Override the default values here.
     <property name="phpunit.configuration-directory" value="tests" />
+    <property name="phpunit.clear-cache-target" value="valid-target.who-clears-the-cache" />
     -->
     
     <target name="help">
