@@ -34,6 +34,12 @@
         <echo>phpunit.run.no-dependency : run the PHPUnit tests without installing all the dependencies.
         </echo>
         
+        <echo level="warning">Symfony:</echo>
+        <echo>optional parameter:
+              [symfony.environment] : the environment name (default: "dev")        </echo>
+        <echo>symfony.clear-cache : clears the application cache for a given environment
+        </echo>
+        
         <echo level="warning">Tips:</echo>
         <echo>no color        : ./phing.sh my.command -logger phing.listener.DefaultLogger</echo>
         <echo>add a parameter : ./phing.sh my.command -Dmy.parameter="my.value"</echo>
