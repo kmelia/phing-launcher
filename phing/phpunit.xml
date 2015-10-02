@@ -29,8 +29,9 @@
             </then>
         </if>
         
-        <exec command="env ./bin/phpunit -c ${phpunit.configuration-directory} ${phpunit.parameters}"
-            passthru="true" checkreturn="true" level="info" />
+        <phingcall target="phing.run-command">
+            <property name="phing.command-name" value="env ./bin/phpunit -c ${phpunit.configuration-directory} ${phpunit.parameters}" />
+        </phingcall>
     </target>
     
     <target name="phpunit.check-properties" hidden="true">

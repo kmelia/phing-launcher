@@ -13,7 +13,9 @@
     </target>
     
     <target name="composer.install-or-update" depends="composer.check-properties, composer.get-latest" hidden="true">
-        <exec command="php composer.phar ${composer.command} --working-dir=${composer.directory} --prefer-dist ${composer.parameters}" passthru="true" level="info" />
+        <phingcall target="phing.run-command">
+            <property name="phing.command-name" value="php composer.phar ${composer.command} --working-dir=${composer.directory} --prefer-dist ${composer.parameters}" />
+        </phingcall>
     </target>
     
     <target name="composer.check-properties" hidden="true">
@@ -49,10 +51,14 @@
     </target>
     
     <target name="composer.download-from-origin" hidden="true">
-        <exec command="curl -sS http://getcomposer.org/installer | php" passthru="true" level="info" />
+        <phingcall target="phing.run-command">
+            <property name="phing.command-name" value="curl -sS http://getcomposer.org/installer | php" />
+        </phingcall>
     </target>
     
     <target name="composer.self-update" hidden="true">
-        <exec command="php composer.phar self-update" passthru="true" level="info" />
+        <phingcall target="phing.run-command">
+            <property name="phing.command-name" value="php composer.phar self-update" />
+        </phingcall>
     </target>
 </project>
