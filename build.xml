@@ -15,8 +15,8 @@
         </echo>
         
         <echo level="warning">Phing Launcher:</echo>
-        <echo>get-the-classics (or gtc) : getting the classics configuration</echo>
-        <echo>self-update               : self update this script.
+        <echo>get-the-classics (gtc) : getting the classics configuration</echo>
+        <echo>self-update (su)       : self update this script.
         </echo>
         
         <echo level="warning">Composer:</echo>

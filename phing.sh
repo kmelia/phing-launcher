@@ -64,7 +64,7 @@ then
     showTheHelpAndExit
 fi
 
-if [ "$1" = "self-update" ]
+if [ "$1" = "self-update" -o "$1" = "selfupdate" -o "$1" = "su" ]
 then
     echo ">> updating the Phing Launcher script from the repository $repositoryUrl"
     
