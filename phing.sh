@@ -58,6 +58,7 @@ then
         && cd $configurationDirectory \
         && curl -sS -O $repositoryUrl/raw/master/$configurationDirectory/composer.xml \
         && curl -sS -O $repositoryUrl/raw/master/$configurationDirectory/phpunit.xml \
+        && curl -sS -O $repositoryUrl/raw/master/$configurationDirectory/symfony.xml \
         && cd - > /dev/null
     
     showTheHelpAndExit
