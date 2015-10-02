@@ -2,6 +2,7 @@
 <project default="help">
     <import file="phing/composer.xml" />
     <import file="phing/phpunit.xml" />
+    <import file="phing/symfony.xml" />
     
     <!--
     Override the default values here.
