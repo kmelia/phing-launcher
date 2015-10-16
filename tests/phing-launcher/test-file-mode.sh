@@ -8,8 +8,7 @@ sh phing.sh -logger phing.listener.DefaultLogger >> $traceLogFile 2>> $errorLogF
 
 if [ ! -x $phingWithComposer ]
 then
-    echo "Unable to use $phingWithComposer without executable mode"
-    exitOnFail
+    exitOnFail "Unable to use $phingWithComposer without executable mode"
 fi
 
 echo "[end] OK"
