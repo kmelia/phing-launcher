@@ -30,6 +30,12 @@ then
     echo ">> using $temporaryPhing instead of $phing"
     phing="php $temporaryPhing"
 else
+    if [ ! -x $phing ]
+    then
+        echo ">> adding executable mode to $phing"
+        chmod +x $phing
+    fi
+    
     if [ -f $temporaryPhing ]
     then
         echo ">> removing $temporaryPhing, phing already exists in $phing"

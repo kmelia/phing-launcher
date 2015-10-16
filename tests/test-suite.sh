@@ -20,5 +20,6 @@ phingWithPhar=./phing.phar
 echo "Launch test suite:"
 
 . $(dirname $0)/phing-launcher/test-install.sh
+. $(dirname $0)/phing-launcher/test-file-mode.sh
 
 exit 0
