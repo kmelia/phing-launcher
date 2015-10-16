@@ -7,7 +7,7 @@ repositoryUrl=https://bitbucket.org/kmelia/phing-launcher
 configurationDirectory=phing
 phingLauncher=phing.sh
 
-# if file not exists or file has not a size greater than zero.
+# if file does not exists or file has not a size greater than zero.
 if [ ! -s $phing ]
 then
     if [ -e $phing ]
@@ -29,11 +29,12 @@ then
     
     echo ">> using $temporaryPhing instead of $phing"
     phing="php $temporaryPhing"
-    
-elif [ -f $temporaryPhing ]
-then
-    echo ">> removing $temporaryPhing, phing already exists in $phing"
-    rm $temporaryPhing
+else
+    if [ -f $temporaryPhing ]
+    then
+        echo ">> removing $temporaryPhing, phing already exists in $phing"
+        rm $temporaryPhing
+    fi
 fi
 
 showTheHelpAndExit() {
