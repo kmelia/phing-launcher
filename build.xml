@@ -55,6 +55,6 @@
             </then>
         </if>
         
-        <exec command="${phing.command-name}" passthru="true" checkreturn="true" level="${phing.command-level}" />
+        <exec command="${phing.command-name}" logoutput="true" checkreturn="true" level="${phing.command-level}" />
     </target>
 </project>
