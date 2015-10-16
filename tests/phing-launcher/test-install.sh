@@ -31,7 +31,7 @@ then
     exitOnFail
 fi
 
-sh phing.sh -logger phing.listener.DefaultLogger composer.install 2>&1 >> $logFile
+sh phing.sh -logger phing.listener.DefaultLogger composer.install >> $traceLogFile 2>> $errorLogFile
 
 if [ ! -s $phingWithPhar ]
 then
@@ -45,7 +45,7 @@ then
     exitOnFail
 fi
 
-sh phing.sh -logger phing.listener.DefaultLogger composer.install 2>&1 >> $logFile
+sh phing.sh -logger phing.listener.DefaultLogger composer.install >> $traceLogFile 2>> $errorLogFile
 
 if [ -f $phingWithPhar ]
 then

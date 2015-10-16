@@ -4,7 +4,7 @@ echo "[start] Test file mode ..."
 
 chmod -x $phingWithComposer
 
-sh phing.sh -logger phing.listener.DefaultLogger 2>&1 >> $logFile
+sh phing.sh -logger phing.listener.DefaultLogger >> $traceLogFile 2>> $errorLogFile
 
 if [ ! -x $phingWithComposer ]
 then
