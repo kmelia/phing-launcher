@@ -21,13 +21,13 @@ cleanupLogFile() {
 }
 
 exitOnFail() {
-    if [ -f $traceLogFile ]
+    if [ -s $traceLogFile ]
     then
         echo "[info] the trace log is shown below"
         cat $traceLogFile
     fi
     
-    if [ -f $errorLogFile ]
+    if [ -s $errorLogFile ]
     then
         echo "[failed] the error log is shown below"
         cat $errorLogFile
