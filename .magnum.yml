@@ -4,7 +4,9 @@
 #before_install:
 
 install:
-  - echo "do not install anything yet"
+  # require PHP command line
+  - sudo apt-get update --yes --quiet
+  - sudo apt-get install --yes --quiet php5-cli
 
 #before_script:
 
