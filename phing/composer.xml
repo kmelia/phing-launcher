@@ -12,7 +12,7 @@
         </phingcall>
     </target>
     
-    <target name="composer.install-or-update" depends="composer.check-properties, composer.get-latest" hidden="true">
+    <target name="composer.install-or-update" depends="composer.check-properties, composer.get-latest, composer.github_oauth_token" hidden="true">
         <phingcall target="phing.run-command">
             <property name="phing.command-name" value="php composer.phar ${composer.command} --working-dir=${composer.directory} --prefer-dist ${composer.parameters}" />
         </phingcall>
@@ -47,6 +47,20 @@
             <else>
                 <phingcall target="composer.download-from-origin" />
             </else>
+        </if>
+    </target>
+    
+    <target name="composer.github_oauth_token" hidden="true">
+        <if>
+            <isset property="env.COMPOSER_GITHUB_OAUTH_TOKEN" />
+            <then>
+                <echo>create github-oauth.github.com</echo>
+                
+                <phingcall target="phing.run-command">
+                    <property name="phing.command-level" value="debug" />
+                    <property name="phing.command-name" value="php composer.phar config github-oauth.github.com ${env.COMPOSER_GITHUB_OAUTH_TOKEN}" />
+                </phingcall>
+            </then>
         </if>
     </target>
     
