@@ -1,6 +1,6 @@
 Phing Launcher
 ==============
-[![Build Status](https://magnum-ci.com/status/eb0e22b366c74f7d4b04323c9f259167.png?branch=develop)](https://magnum-ci.com/public/2f8faeb4198eef6d32b8/builds)
+[![Build Status](https://travis-ci.org/kmelia/phing-launcher.svg)](https://travis-ci.org/kmelia/phing-launcher)
 
 **Provides a [launcher][1] to run [Phing][2] without Phing.** 
 
