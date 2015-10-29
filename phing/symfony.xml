@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
+    <import file="phing/phing.xml" />
+    
     <target name="symfony.clear-cache">
         <phingcall target="symfony.run-command">
             <property name="symfony.command-name" value="cache:clear" />
