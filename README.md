@@ -48,9 +48,9 @@ You can try the several configurations available into the [``phing/``][5] direct
 
 - ``phing/composer.xml`` provides the complete usage of [Composer][3] (including the download),
 - ``phing/phpunit.xml`` provides a usage of PHPunit,
-- ``phing/symfony.xml`` provides a usage of [Symfony][6].
+- ``phing/symfony.xml`` provides a usage of [Symfony][6] console.
 
-Run the following command to download the classics configurations on your project:
+Run the following command to download the classics configurations and the [``build.xml``][7] example file on your project:
 ```bash
 ./phing.sh get-the-classics
 ```
@@ -61,3 +61,4 @@ Run the following command to download the classics configurations on your projec
   [4]: https://bitbucket.org/kmelia/phing-launcher/raw/master/phing.sh
   [5]: https://bitbucket.org/kmelia/phing-launcher/raw/master/phing/
   [6]: https://bitbucket.org/kmelia/fresh-symfony
+  [7]: https://bitbucket.org/kmelia/phing-launcher/src/master/build.xml

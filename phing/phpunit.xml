@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
+    <import file="phing/phing.xml" />
     <import file="phing/composer.xml" />
     
     <target name="phpunit.run">

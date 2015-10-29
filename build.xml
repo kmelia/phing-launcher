@@ -44,17 +44,4 @@
         <echo>no color        : ./phing.sh my.command -logger phing.listener.DefaultLogger</echo>
         <echo>add a parameter : ./phing.sh my.command -Dmy.parameter="my.value"</echo>
     </target>
-    
-    <target name="phing.run-command" hidden="true">
-        <if>
-            <not>
-                <isset property="phing.command-level" />
-            </not>
-            <then>
-                <property name="phing.command-level" value="info" />
-            </then>
-        </if>
-        
-        <exec command="${phing.command-name}" logoutput="true" checkreturn="true" level="${phing.command-level}" />
-    </target>
 </project>
