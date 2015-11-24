@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
 echo "[start] Test installing and downloading Phing ..."
 
@@ -27,7 +27,7 @@ then
     exitOnFail "Unable to create empty $phingWithComposer file."
 fi
 
-sh phing.sh -logger phing.listener.DefaultLogger composer.install >> $traceLogFile 2>> $errorLogFile
+./phing.sh -logger phing.listener.DefaultLogger composer.install >> $traceLogFile 2>> $errorLogFile
 
 if [ ! -s $phingWithPhar ]
 then
@@ -39,7 +39,7 @@ then
     exitOnFail "Unable to get $phingWithComposer on Composer."
 fi
 
-sh phing.sh -logger phing.listener.DefaultLogger composer.install >> $traceLogFile 2>> $errorLogFile
+./phing.sh -logger phing.listener.DefaultLogger composer.install >> $traceLogFile 2>> $errorLogFile
 
 if [ -f $phingWithPhar ]
 then

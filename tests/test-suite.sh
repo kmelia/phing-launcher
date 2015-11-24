@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
 # log message
 traceLogFile=$(dirname $0)/trace.log
