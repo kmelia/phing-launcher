@@ -38,8 +38,8 @@
         </echo>
         
         <echo>Phing
-        ./phing.sh my.command -logger phing.listener.DefaultLogger .. disable colors; 
-        ./phing.sh my.command -Dmy.parameter="my.value" ............. add a parameter. 
+        ./phing.sh my.command -logger phing.listener.DefaultLogger .. disable colors,
+        ./phing.sh my.command -Dmy.parameter="my.value" ............. add a parameter.
         </echo>
     </target>
     
