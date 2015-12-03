@@ -32,6 +32,9 @@
         <echo level="warning">PHPUnit:</echo>
         <echo>phpunit.run               : run the PHPUnit tests (for Continuous Integration).</echo>
         <echo>phpunit.run.no-dependency : run the PHPUnit tests without installing all the dependencies.
+          + optionals parameters:
+              [phpunit.parameters] : add some parameters to the command (default: "")
+          + example : ./phing.sh phpunit.run -Dphpunit.parameters="--testsuite project"
         </echo>
         
         <echo level="warning">Symfony:</echo>
