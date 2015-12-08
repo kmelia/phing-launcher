@@ -1,4 +1,4 @@
-# see http://about.travis-ci.org/docs/user/languages/php/ for more hints
+# see https://docs.travis-ci.com/user/languages/php for more hints
 language: php
 
 php:
