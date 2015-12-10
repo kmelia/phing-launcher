@@ -51,5 +51,7 @@ cleanupLogFile
 . $(dirname $0)/phing-launcher/test-install.sh
 cleanupLogFile
 . $(dirname $0)/phing-launcher/test-file-mode.sh
+cleanupLogFile
+. $(dirname $0)/phing-launcher/test-environment-variable.sh
 
 exit 0
