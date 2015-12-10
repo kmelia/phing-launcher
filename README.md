@@ -11,8 +11,10 @@ Because we want:
 
 I explain the magic trick:
 
-- if the Composer shortcut ``./bin/phing`` does not exist, the launcher download the latest Phing phar binary,
+- if the Composer shortcut does not exist, the launcher download the latest Phing phar binary,
 - and when the Composer shortcut is created, the launcher will remove the phar binary.
+
+The Composer shortcut can be [specified by your configuration][8] or it defaults ``./vendor/bin/phing``. 
 
 Getting started
 ---------------
@@ -57,8 +59,9 @@ Run the following command to download the classics configurations and the [``bui
 
   [1]: https://bitbucket.org/kmelia/phing-launcher
   [2]: http://www.phing.info/
-  [3]: http://getcomposer.org/
+  [3]: https://getcomposer.org/
   [4]: https://bitbucket.org/kmelia/phing-launcher/raw/master/phing.sh
   [5]: https://bitbucket.org/kmelia/phing-launcher/raw/master/phing/
   [6]: https://bitbucket.org/kmelia/fresh-symfony
   [7]: https://bitbucket.org/kmelia/phing-launcher/src/master/build.xml
+  [8]: https://getcomposer.org/doc/articles/vendor-binaries.md#can-vendor-binaries-be-installed-somewhere-other-than-vendor-bin-

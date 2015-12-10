@@ -1,11 +1,19 @@
 #!/usr/bin/env sh
 
 # configuration
-phing=./bin/phing
+phing=./vendor/bin/phing
 temporaryPhing=./phing.phar
 repositoryUrl=https://bitbucket.org/kmelia/phing-launcher
 configurationDirectory=phing
 phingLauncher=phing.sh
+
+# read the composer bin directory configuration
+composerBinDirectory=./$(cat composer.json | sed 's/[" ]//g' | grep "config:" -A2 | grep "bin-dir:" | cut -d":" -f2)
+if [ -d $composerBinDirectory ]
+then
+    echo ">> using composer config.bin-dir: $composerBinDirectory instead of $(dirname $phing)"
+    phing=$composerBinDirectory/$(basename $phing)
+fi
 
 # if file does not exists or file has not a size greater than zero.
 if [ ! -s $phing ]
