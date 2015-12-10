@@ -2,7 +2,7 @@
 
 echo "[start] Test environment variable ..."
 
-if env | grep COMPOSER_BIN_DIR
+if [ ! -z "$COMPOSER_BIN_DIR" ]
 then
     exitOnFail "Unable to test if COMPOSER_BIN_DIR  is already exported."
 fi
@@ -14,7 +14,7 @@ fi
 
 export COMPOSER_BIN_DIR=invalid_environment_bin-directory
 
-if ! env | grep COMPOSER_BIN_DIR > /dev/null
+if [ -z "$COMPOSER_BIN_DIR" ]
 then
     exitOnFail "Unable to export COMPOSER_BIN_DIR."
 fi
