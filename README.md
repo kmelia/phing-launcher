@@ -20,16 +20,16 @@ Getting started
 ---------------
 **1.** Modify your ``composer.json`` file, to require Phing by [Composer][3]:
 
-- add ``phing/phing`` dependency to the require section,
+- add ``phing/phing`` dependency to the ``require`` section,
 ```json
 "require": {
     "phing/phing": "2.*"
 }
 ```
-- do not forget to add the bin directory to the configuration section.
+- set the ``bin-dir`` directory to the ``config`` section, if you have to.
 ```json
 "config": {
-    "bin-dir": "bin"
+    "bin-dir": "path/to/bin/directory"
 }
 ```
 
