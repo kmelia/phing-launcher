@@ -15,6 +15,6 @@
         "phing/phing": "2.*"
     },
     "config": {
-        "bin-dir": "bin"
+        "bin-dir": "my_composer_bin-directory"
     }
 }

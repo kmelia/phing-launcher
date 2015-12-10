@@ -1,4 +1,4 @@
-/bin/
+/my_composer_bin-directory/
 /vendor/
 /.project
 /composer.lock

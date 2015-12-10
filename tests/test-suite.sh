@@ -5,7 +5,7 @@ traceLogFile=$(dirname $0)/trace.log
 errorLogFile=$(dirname $0)/error.log
 
 # paths
-phingWithComposer=./bin/phing
+phingWithComposer=./my_composer_bin-directory/phing
 phingWithPhar=./phing.phar
 
 cleanupLogFile() {
@@ -51,5 +51,7 @@ cleanupLogFile
 . $(dirname $0)/phing-launcher/test-install.sh
 cleanupLogFile
 . $(dirname $0)/phing-launcher/test-file-mode.sh
+cleanupLogFile
+. $(dirname $0)/phing-launcher/test-environment-variable.sh
 
 exit 0
