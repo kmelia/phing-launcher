@@ -21,7 +21,7 @@ then
     debug=true
 fi
 
-# function
+# functions
 showMessage() {
     message=$1
     level=$2
@@ -33,13 +33,13 @@ showMessage() {
     
     if $quiet
     then
-        if [ $level != "error" ]
+        if [ "$level" != "error" ]
         then
             return
         fi
     fi
     
-    if [ $level = "debug" ]
+    if [ "$level" = "debug" ]
     then
         if ! $debug
         then
@@ -47,7 +47,13 @@ showMessage() {
         fi
     fi
     
-    echo "$level > $message"
+    printf "$level > $message\n"
+}
+
+showTheHelpAndExit() {
+    showMessage "enjoy Phing! See the help below:\n"
+    
+    exec $phing
 }
 
 # read the "bin-dir" configuration setting in composer.json
@@ -106,18 +112,9 @@ else
     fi
 fi
 
-showTheHelpAndExit() {
-    echo ">> enjoy Phing!"
-    echo
-    echo ">> see the help below:"
-    echo
-    
-    exec $phing
-}
-
 if [ "$1" = "get-the-classics" -o "$1" = "gtc" ]
 then
-    echo ">> getting the classics of Phing Launcher from the repository $repositoryUrl"
+    showMessage "getting the classics of Phing Launcher from the repository $repositoryUrl"
     
     if [ ! -d $configurationDirectory ]
     then
@@ -137,7 +134,7 @@ fi
 
 if [ "$1" = "self-update" -o "$1" = "selfupdate" -o "$1" = "su" ]
 then
-    echo ">> updating the Phing Launcher script from the repository $repositoryUrl"
+    showMessage "updating the Phing Launcher script from the repository $repositoryUrl"
     
     curl -sS -O $repositoryUrl/raw/master/$phingLauncher
     
