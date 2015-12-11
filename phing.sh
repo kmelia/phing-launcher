@@ -1,23 +1,19 @@
 #!/usr/bin/env sh
 
 # configuration
-phing=./vendor/bin/phing
-temporaryPhing=./phing.phar
+phing=vendor/bin/phing
+temporaryPhing=phing.phar
 repositoryUrl=https://bitbucket.org/kmelia/phing-launcher
 configurationDirectory=phing
 phingLauncher=phing.sh
 
 # read the "bin-dir" configuration setting in composer.json
-composerBinDirectoryJson=$(cat composer.json | sed 's/[" ]//g' | grep "config:" -A2 | grep "bin-dir:" | cut -d":" -f2)
-if [ ! -z "$composerBinDirectoryJson" ]
-then
-    composerBinDirectory=./$composerBinDirectoryJson
-fi
+composerBinDirectory=$(cat composer.json | sed 's/[" ]//g' | grep "config:" -A2 | grep "bin-dir:" | cut -d":" -f2)
 
 # read the COMPOSER_BIN_DIR environment variable
 if [ ! -z "$COMPOSER_BIN_DIR" ]
 then
-    composerBinDirectory=./$COMPOSER_BIN_DIR
+    composerBinDirectory=$COMPOSER_BIN_DIR
 fi
 
 if [ -d "$composerBinDirectory" ]
