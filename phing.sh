@@ -7,18 +7,66 @@ repositoryUrl=https://bitbucket.org/kmelia/phing-launcher
 configurationDirectory=phing
 phingLauncher=phing.sh
 
+# phing parameters
+debug=false
+quiet=false
+
+phingParameters=$(echo " $@ " | sed -e "s/ /  /g" -e "s/ -\(q\(uiet\)\?\|S\|silent\) /#quiet#/g" -e "s/ -\(debug\|verbose\) /#debug#/g")
+if echo $phingParameters | grep "#quiet#" > /dev/null
+then
+    quiet=true
+fi
+if echo $phingParameters | grep "#debug#" > /dev/null
+then
+    debug=true
+fi
+
+# function
+showMessage() {
+    message=$1
+    level=$2
+    
+    if [ -z "$level" ]
+    then
+        level=" info"
+    fi
+    
+    if $quiet
+    then
+        if [ $level != "error" ]
+        then
+            return
+        fi
+    fi
+    
+    if [ $level = "debug" ]
+    then
+        if ! $debug
+        then
+            return
+        fi
+    fi
+    
+    echo "$level > $message"
+}
+
 # read the "bin-dir" configuration setting in composer.json
 composerBinDirectory=$(cat composer.json | sed 's/[" ]//g' | grep "config:" -A2 | grep "bin-dir:" | cut -d":" -f2)
+if [ ! -z "$composerBinDirectory" ]
+then
+    showMessage "reading the "bin-dir" configuration setting in composer.json: $composerBinDirectory" "debug"
+fi 
 
 # read the COMPOSER_BIN_DIR environment variable
 if [ ! -z "$COMPOSER_BIN_DIR" ]
 then
     composerBinDirectory=$COMPOSER_BIN_DIR
+    showMessage "reading the COMPOSER_BIN_DIR environment variable: $composerBinDirectory" "debug"
 fi
 
 if [ -d "$composerBinDirectory" ]
 then
-    echo ">> using composer bin directory: $composerBinDirectory instead of $(dirname $phing)"
+    showMessage "using composer bin directory: $composerBinDirectory instead of $(dirname $phing)"
     phing=$composerBinDirectory/$(basename $phing)
 fi
 
@@ -27,33 +75,33 @@ if [ ! -s $phing ]
 then
     if [ -e $phing ]
     then
-        echo ">> removing invalid file $phing (size equals zero)"
+        showMessage "removing invalid file $phing (size equals zero)"
         rm $phing
     fi
     
     if [ ! -s $temporaryPhing ]
     then
-        echo ">> downloading $temporaryPhing from origin"
+        showMessage "downloading $temporaryPhing from origin"
         curl -sS -o $temporaryPhing http://www.phing.info/get/phing-latest.phar
         if [ ! -f $temporaryPhing ]
         then
-            echo "[error] Unable to download the file."
+            showMessage "Unable to download the file." "error"
             exit 1
         fi
     fi
     
-    echo ">> using $temporaryPhing instead of $phing"
+    showMessage "using $temporaryPhing instead of $phing"
     phing="php $temporaryPhing"
 else
     if [ ! -x $phing ]
     then
-        echo ">> adding executable mode to $phing"
+        showMessage "adding executable mode to $phing"
         chmod +x $phing
     fi
     
     if [ -f $temporaryPhing ]
     then
-        echo ">> removing $temporaryPhing, phing already exists in $phing"
+        showMessage "removing $temporaryPhing, phing already exists in $phing"
         rm $temporaryPhing
     fi
 fi
