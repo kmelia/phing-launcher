@@ -83,7 +83,7 @@ then
     then
         showMessage "downloading $temporaryPhing from origin"
         curl -sS -o $temporaryPhing http://www.phing.info/get/phing-latest.phar
-        if [ ! -f $temporaryPhing ]
+        if [ ! -s $temporaryPhing ]
         then
             showMessage "Unable to download the file." "error"
             exit 1
