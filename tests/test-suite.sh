@@ -5,8 +5,8 @@ traceLogFile=$(dirname $0)/trace.log
 errorLogFile=$(dirname $0)/error.log
 
 # paths
-phingWithComposer=./my_composer_bin-directory/phing
-phingWithPhar=./phing.phar
+phingWithComposer=vendor/composer/my_bin-directory/phing
+phingWithPhar=phing.phar
 
 cleanupLogFile() {
     if [ -f $traceLogFile ]

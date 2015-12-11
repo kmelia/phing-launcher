@@ -31,11 +31,20 @@
         </if>
         
         <phingcall target="phing.run-command">
-            <property name="phing.command-name" value="env ./bin/phpunit -c ${phpunit.configuration-directory} ${phpunit.parameters}" />
+            <property name="phing.command-name" value="env ${phpunit.bin-directory}/phpunit -c ${phpunit.configuration-directory} ${phpunit.parameters}" />
         </phingcall>
     </target>
     
     <target name="phpunit.check-properties" hidden="true">
+        <if>
+            <not>
+                <isset property="phpunit.bin-directory" />
+            </not>
+            <then>
+                <property name="phpunit.bin-directory" value="vendor/bin" />
+            </then>
+        </if>
+        
         <if>
             <not>
                 <isset property="phpunit.configuration-directory" />

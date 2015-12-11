@@ -19,7 +19,7 @@ then
     exitOnFail "Unable to create empty $phingWithPhar file."
 fi
 
-mkdir $(dirname $phingWithComposer)
+mkdir -p $(dirname $phingWithComposer)
 touch $phingWithComposer
 
 if [ ! -f $phingWithComposer ]

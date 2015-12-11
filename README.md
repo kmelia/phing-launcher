@@ -14,7 +14,7 @@ I explain the magic trick:
 - if the Composer shortcut does not exist, the launcher download the latest Phing phar binary,
 - and when the Composer shortcut is created, the launcher will remove the phar binary.
 
-The Composer shortcut can be [specified by your configuration][8] or it defaults ``./vendor/bin/phing``. 
+The Composer shortcut can be [specified by your configuration][8] or it defaults ``vendor/bin/phing``. 
 
 Getting started
 ---------------
