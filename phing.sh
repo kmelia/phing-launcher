@@ -21,7 +21,7 @@ then
     debug=true
 fi
 
-# function
+# functions
 showMessage() {
     message=$1
     level=$2
@@ -48,6 +48,12 @@ showMessage() {
     fi
     
     printf "$level > $message\n"
+}
+
+showTheHelpAndExit() {
+    showMessage "enjoy Phing! See the help below:\n"
+    
+    exec $phing
 }
 
 # read the "bin-dir" configuration setting in composer.json
@@ -105,12 +111,6 @@ else
         rm $temporaryPhing
     fi
 fi
-
-showTheHelpAndExit() {
-    showMessage "enjoy Phing! See the help below:\n"
-    
-    exec $phing
-}
 
 if [ "$1" = "get-the-classics" -o "$1" = "gtc" ]
 then
