@@ -10,7 +10,7 @@
     
     <target name="symfony.run-command" depends="symfony.check-properties" hidden="true">
         <phingcall target="phing.run-command">
-            <property name="phing.command-name" value="php app/console --env=${symfony.environment} ${symfony.command-name}" />
+            <property name="phing.command-name" value="env ${symfony.bin-directory}/console --env=${symfony.environment} ${symfony.command-name}" />
         </phingcall>
     </target>
     
@@ -21,6 +21,15 @@
             </not>
             <then>
                 <property name="symfony.environment" value="dev" />
+            </then>
+        </if>
+        
+        <if>
+            <not>
+                <isset property="symfony.bin-directory" />
+            </not>
+            <then>
+                <property name="symfony.bin-directory" value="bin" />
             </then>
         </if>
     </target>
