@@ -9,6 +9,7 @@
     <property name="phpunit.bin-directory" value="vendor/bin" />
     <property name="phpunit.configuration-directory" value="tests" />
     <property name="phpunit.clear-cache-target" value="valid-target.who-clears-the-cache" />
+    <property name="phpunit.install-target" value="valid-target.who-installs-the-dependencies" />
     <property name="symfony.bin-directory" value="bin" />
     -->
     
@@ -17,23 +18,24 @@
         </echo>
         
         <echo>Phing Launcher
-        help.more .................. provides more help on the tasks groups.
-        get-the-classics (gtc) ..... getting the classics configuration,
-        self-update (su) ........... self update this script.
+        help.more ....................... provides more help on the tasks groups.
+        get-the-classics (gtc) .......... getting the classics configuration,
+        self-update (su) ................ self update this script.
         </echo>
         
         <echo>Composer
-        composer.update ............ updates the project dependencies with Composer,
-        composer.install ........... installs the project dependencies with Composer.
+        composer.update ................. updates the project dependencies with Composer,
+        composer.install ................ installs the project dependencies with Composer.
         </echo>
         
         <echo>PHPUnit
-        phpunit.run ................ run the PHPUnit tests (for Continuous Integration),
-        phpunit.run.no-dependency .. run the PHPUnit tests without installing all the dependencies.
+        phpunit.run ..................... run the PHPUnit tests (for Continuous Integration).
         </echo>
         
         <echo>Symfony
-        symfony.clear-cache ........ clears the application cache for a given environment.
+        symfony.clear-cache ............. clears the application cache for a given environment,
+        symfony.install-assets .......... installs bundle assets into a given directory.
+        symfony.install-assets-symlink .. same as install-assets with symlink instead of a copy.
         </echo>
         
         <echo level="warning">Tips:
@@ -54,21 +56,21 @@
     
     <target name="help.phing-launcher" hidden="true">
         <echo>Phing Launcher
-        help.more .................. provides more help on the tasks groups.
-        get-the-classics (gtc) ..... getting the classics configuration,
-        self-update (su) ........... self update this script.
+        help.more ....................... provides more help on the tasks groups.
+        get-the-classics (gtc) .......... getting the classics configuration,
+        self-update (su) ................ self update this script.
         </echo>
     </target>
     
     <target name="help.composer" hidden="true">
         <echo>Composer
-        composer.update ............ updates the project dependencies with Composer,
-        composer.install ........... installs the project dependencies with Composer.
+        composer.update ................. updates the project dependencies with Composer,
+        composer.install ................ installs the project dependencies with Composer.
         </echo>
         
         <echo>Optionals parameters
-        [composer.parameters] ...... some parameters to add on the command (default: "")
-        [composer.directory] ....... run in a specific directory (default: .)
+        [composer.parameters] ........... some parameters to add on the command (default: "")
+        [composer.directory] ............ run in a specific directory (default: .)
         </echo>
         
         <echo level="warning">Example of use
@@ -77,12 +79,11 @@
     
     <target name="help.phpunit" hidden="true">
         <echo>PHPUnit
-        phpunit.run ................ run the PHPUnit tests (for Continuous Integration),
-        phpunit.run.no-dependency .. run the PHPUnit tests without installing all the dependencies.
+        phpunit.run ..................... run the PHPUnit tests (for Continuous Integration).
         </echo>
         
         <echo>Optionals parameters
-        [phpunit.parameters] ....... some parameters to add on the command (default: "")
+        [phpunit.parameters] ............ some parameters to add on the command (default: "")
         </echo>
         
         <echo level="warning">Example of use
@@ -91,11 +92,17 @@
     
     <target name="help.symfony" hidden="true">
         <echo>Symfony
-        symfony.clear-cache ........ clears the application cache for a given environment.
+        symfony.clear-cache ............. clears the application cache for a given environment,
+        symfony.install-assets .......... installs bundle assets into a given directory,
+        symfony.install-assets-symlink .. same as install-assets with symlink instead of a copy.
         </echo>
         
         <echo>Optionals parameters
-        [symfony.environment] ...... the environment name (default: "dev")
+        [symfony.environment] ........... the environment name (default: "dev")
+        [symfony.parameters] ............ some parameters to add on the command (default: "")
         </echo>
+        
+        <echo level="warning">Example of use
+        ./phing.sh symfony.clear-cache -Dsymfony.environment="prod" -Dsymfony.parameters="--no-warmup"</echo>
     </target>
 </project>
