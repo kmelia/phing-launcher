@@ -4,25 +4,25 @@
     
     <target name="symfony.clear-cache">
         <phingcall target="symfony.run-command">
-            <property name="symfony.command-name" value="cache:clear" />
+            <property name="symfony.command-line" value="cache:clear" />
         </phingcall>
     </target>
     
     <target name="symfony.install-assets">
         <phingcall target="symfony.run-command">
-            <property name="symfony.command-name" value="assets:install" />
+            <property name="symfony.command-line" value="assets:install" />
         </phingcall>
     </target>
     
     <target name="symfony.install-assets-symlink">
         <phingcall target="symfony.run-command">
-            <property name="symfony.command-name" value="assets:install --symlink --relative" />
+            <property name="symfony.command-line" value="assets:install --symlink --relative" />
         </phingcall>
     </target>
     
     <target name="symfony.run-command" depends="symfony.check-properties" hidden="true">
         <phingcall target="phing.run-command">
-            <property name="phing.command-name" value="env ${symfony.bin-directory}/console --env=${symfony.environment} ${symfony.command-name} ${symfony.parameters}" />
+            <property name="phing.command-line" value="env ${symfony.bin-directory}/console --env=${symfony.environment} ${symfony.command-line} ${symfony.parameters}" />
         </phingcall>
     </target>
     
