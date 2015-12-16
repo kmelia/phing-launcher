@@ -54,6 +54,18 @@
         </if>
     </target>
     
+    <target name="composer.download-from-origin" hidden="true">
+        <phingcall target="phing.run-command">
+            <property name="phing.command-line" value="curl -sS http://getcomposer.org/installer | php" />
+        </phingcall>
+    </target>
+    
+    <target name="composer.self-update" hidden="true">
+        <phingcall target="composer.run-simple-command">
+            <property name="composer.command-line" value="self-update" />
+        </phingcall>
+    </target>
+    
     <target name="composer.github_oauth_token" hidden="true">
         <if>
             <isset property="env.COMPOSER_GITHUB_OAUTH_TOKEN" />
@@ -66,18 +78,6 @@
                 </phingcall>
             </then>
         </if>
-    </target>
-    
-    <target name="composer.download-from-origin" hidden="true">
-        <phingcall target="phing.run-command">
-            <property name="phing.command-line" value="curl -sS http://getcomposer.org/installer | php" />
-        </phingcall>
-    </target>
-    
-    <target name="composer.self-update" hidden="true">
-        <phingcall target="composer.run-simple-command">
-            <property name="composer.command-line" value="self-update" />
-        </phingcall>
     </target>
     
     <target name="composer.run-simple-command" hidden="true">
