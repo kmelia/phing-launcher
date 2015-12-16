@@ -2,21 +2,23 @@
 <project>
     <import file="phing/phing.xml" />
     
+    <property name="composer.phar-file" value="composer.phar" />
+    
     <target name="composer.install">
-        <phingcall target="composer.install-or-update">
-            <property name="composer.command" value="install" />
+        <phingcall target="composer.run-command">
+            <property name="composer.command-line" value="install --prefer-dist" />
         </phingcall>
     </target>
     
     <target name="composer.update">
-        <phingcall target="composer.install-or-update">
-            <property name="composer.command" value="update" />
+        <phingcall target="composer.run-command">
+            <property name="composer.command-line" value="update --prefer-dist" />
         </phingcall>
     </target>
     
-    <target name="composer.install-or-update" depends="composer.check-properties, composer.get-latest, composer.github_oauth_token" hidden="true">
-        <phingcall target="phing.run-command">
-            <property name="phing.command-line" value="php composer.phar ${composer.command} --working-dir=${composer.directory} --prefer-dist ${composer.parameters}" />
+    <target name="composer.run-command" depends="composer.check-properties, composer.get-latest, composer.github_oauth_token" hidden="true">
+        <phingcall target="composer.run-simple-command">
+            <property name="composer.command-line" value="${composer.command-line} --working-dir=${composer.directory} ${composer.parameters}" override="true" />
         </phingcall>
     </target>
     
@@ -42,7 +44,7 @@
     
     <target name="composer.get-latest" hidden="true">
         <if>
-            <available file="composer.phar" type="file" />
+            <available file="${composer.phar-file}" type="file" />
             <then>
                 <phingcall target="composer.self-update" />
             </then>
@@ -58,9 +60,9 @@
             <then>
                 <echo>create github-oauth.github.com</echo>
                 
-                <phingcall target="phing.run-command">
+                <phingcall target="composer.run-simple-command">
                     <property name="phing.command-level" value="debug" />
-                    <property name="phing.command-line" value="php composer.phar config github-oauth.github.com ${env.COMPOSER_GITHUB_OAUTH_TOKEN}" />
+                    <property name="composer.command-line" value="config github-oauth.github.com ${env.COMPOSER_GITHUB_OAUTH_TOKEN}" />
                 </phingcall>
             </then>
         </if>
@@ -73,8 +75,14 @@
     </target>
     
     <target name="composer.self-update" hidden="true">
+        <phingcall target="composer.run-simple-command">
+            <property name="composer.command-line" value="self-update" />
+        </phingcall>
+    </target>
+    
+    <target name="composer.run-simple-command" hidden="true">
         <phingcall target="phing.run-command">
-            <property name="phing.command-line" value="php composer.phar self-update" />
+            <property name="phing.command-line" value="php ${composer.phar-file} ${composer.command-line}" />
         </phingcall>
     </target>
 </project>
