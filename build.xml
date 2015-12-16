@@ -9,6 +9,7 @@
     <property name="phpunit.bin-directory" value="vendor/bin" />
     <property name="phpunit.configuration-directory" value="tests" />
     <property name="phpunit.clear-cache-target" value="valid-target.who-clears-the-cache" />
+    <property name="phpunit.install-target" value="valid-target.who-installs-the-dependencies" />
     <property name="symfony.bin-directory" value="bin" />
     -->
     
@@ -28,8 +29,7 @@
         </echo>
         
         <echo>PHPUnit
-        phpunit.run ..................... run the PHPUnit tests (for Continuous Integration),
-        phpunit.run.no-dependency ....... run the PHPUnit tests without installing all the dependencies.
+        phpunit.run ..................... run the PHPUnit tests (for Continuous Integration).
         </echo>
         
         <echo>Symfony
@@ -79,8 +79,7 @@
     
     <target name="help.phpunit" hidden="true">
         <echo>PHPUnit
-        phpunit.run ..................... run the PHPUnit tests (for Continuous Integration),
-        phpunit.run.no-dependency ....... run the PHPUnit tests without installing all the dependencies.
+        phpunit.run ..................... run the PHPUnit tests (for Continuous Integration).
         </echo>
         
         <echo>Optionals parameters
