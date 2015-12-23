@@ -70,12 +70,12 @@
         <if>
             <isset property="env.COMPOSER_GITHUB_OAUTH_TOKEN" />
             <then>
-                <echo>create github-oauth.github.com</echo>
-                
                 <phingcall target="composer.run-simple-command">
                     <property name="phing.command-level" value="debug" />
                     <property name="composer.command-line" value="config github-oauth.github.com ${env.COMPOSER_GITHUB_OAUTH_TOKEN}" />
                 </phingcall>
+                
+                <echo>create github-oauth.github.com from COMPOSER_GITHUB_OAUTH_TOKEN</echo>
             </then>
         </if>
     </target>
