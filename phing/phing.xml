@@ -10,8 +10,17 @@
             </then>
         </if>
         
-        <exec command="${phing.command-line}" checkreturn="true" level="${phing.command-level}" outputProperty="phing.command-output" />
+        <exec command="${phing.command-line}" level="${phing.command-level}" returnProperty="phing.command-exit-code" outputProperty="phing.command-output" />
         
         <echo level="${phing.command-level}">${phing.command-output}</echo>
+        
+        <if>
+            <not>
+                <equals arg1="${phing.command-exit-code}" arg2="0" />
+            </not>
+            <then>
+                <fail message="Phing command exited with code ${phing.command-exit-code}" />
+            </then>
+        </if>
     </target>
 </project>

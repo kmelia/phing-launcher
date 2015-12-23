@@ -45,6 +45,10 @@
         ./phing.sh my.command -logger phing.listener.DefaultLogger .. disable colors,
         ./phing.sh my.command -Dmy.parameter="my.value" ............. add a parameter.
         </echo>
+        
+        <echo>Composer
+        install or update without asking for authentication with the environment variable called COMPOSER_GITHUB_OAUTH_TOKEN
+        </echo>
     </target>
     
     <target name="help.more">
