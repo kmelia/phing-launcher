@@ -8,8 +8,8 @@
     Override the default values here:
     <property name="phpunit.bin-directory" value="vendor/bin" />
     <property name="phpunit.configuration-directory" value="tests" />
-    <property name="phpunit.clear-cache-target" value="valid-target.who-clears-the-cache" />
     <property name="phpunit.install-target" value="valid-target.who-installs-the-dependencies" />
+    <property name="phpunit.clear-cache-target" value="valid-target.who-clears-the-cache" />
     <property name="symfony.bin-directory" value="bin" />
     -->
     
