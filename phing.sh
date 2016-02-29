@@ -85,10 +85,13 @@ then
         rm $phing
     fi
     
-    if ! php $temporaryPhing > /dev/null
+    if [ -s $temporaryPhing ]
     then
-        showMessage "removing invalid file $temporaryPhing (broken phar)"
-        rm $temporaryPhing
+        if ! php $temporaryPhing > /dev/null
+        then
+            showMessage "removing invalid file $temporaryPhing (broken phar)"
+            rm $temporaryPhing
+        fi
     fi
     
     if [ ! -s $temporaryPhing ]
