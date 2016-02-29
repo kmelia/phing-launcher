@@ -85,6 +85,15 @@ then
         rm $phing
     fi
     
+    if [ -s $temporaryPhing ]
+    then
+        if ! php $temporaryPhing > /dev/null
+        then
+            showMessage "removing invalid file $temporaryPhing (broken phar)"
+            rm $temporaryPhing
+        fi
+    fi
+    
     if [ ! -s $temporaryPhing ]
     then
         showMessage "downloading $temporaryPhing from origin"

@@ -77,6 +77,10 @@
         [composer.directory] ............ run in a specific directory (default: .)
         </echo>
         
+        <echo>Tips
+        install or update without asking for authentication with the environment variable called COMPOSER_GITHUB_OAUTH_TOKEN
+        </echo>
+        
         <echo level="warning">Example of use
         ./phing.sh composer.install -Dcomposer.parameters="--no-dev --no-scripts"</echo>
     </target>
