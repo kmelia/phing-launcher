@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project default="help">
     <import file="phing/composer.xml" />
+    <import file="phing/deptrac.xml" />
     <import file="phing/phpunit.xml" />
     <import file="phing/symfony.xml" />
     
@@ -36,6 +37,10 @@
         symfony.clear-cache ............. clears the application cache for a given environment,
         symfony.install-assets .......... installs bundle assets into a given directory.
         symfony.install-assets-symlink .. same as install-assets with symlink instead of a copy.
+        </echo>
+        
+        <echo>Deptrac
+        deptrac.analyze ................. analyze the source.
         </echo>
         
         <echo level="warning">Tips:
