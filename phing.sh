@@ -133,6 +133,7 @@ then
     curl -sS -O $repositoryUrl/raw/master/build.xml \
         && cd $configurationDirectory \
         && curl -sS -O $repositoryUrl/raw/master/$configurationDirectory/composer.xml \
+        && curl -sS -O $repositoryUrl/raw/master/$configurationDirectory/deptrac.xml \
         && curl -sS -O $repositoryUrl/raw/master/$configurationDirectory/phing.xml \
         && curl -sS -O $repositoryUrl/raw/master/$configurationDirectory/phpunit.xml \
         && curl -sS -O $repositoryUrl/raw/master/$configurationDirectory/symfony.xml \
