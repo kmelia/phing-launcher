@@ -19,7 +19,7 @@
         </echo>
         
         <echo>Phing Launcher
-        help.more ....................... provides more help on the tasks groups.
+        help.more ....................... provides more help on the tasks groups,
         get-the-classics (gtc) .......... getting the classics configuration,
         self-update (su) ................ self update this script.
         </echo>
@@ -35,8 +35,9 @@
         
         <echo>Symfony
         symfony.clear-cache ............. clears the application cache for a given environment,
-        symfony.install-assets .......... installs bundle assets into a given directory.
-        symfony.install-assets-symlink .. same as install-assets with symlink instead of a copy.
+        symfony.install-assets .......... installs bundle assets into a given directory,
+        symfony.install-assets-symlink .. same as install-assets with symlink instead of a copy,
+        symfony.search-environments ..... search all the available symfony environments.
         </echo>
         
         <echo>Deptrac
@@ -65,7 +66,7 @@
     
     <target name="help.phing-launcher" hidden="true">
         <echo>Phing Launcher
-        help.more ....................... provides more help on the tasks groups.
+        help.more ....................... provides more help on the tasks groups,
         get-the-classics (gtc) .......... getting the classics configuration,
         self-update (su) ................ self update this script.
         </echo>
@@ -107,7 +108,8 @@
         <echo>Symfony
         symfony.clear-cache ............. clears the application cache for a given environment,
         symfony.install-assets .......... installs bundle assets into a given directory,
-        symfony.install-assets-symlink .. same as install-assets with symlink instead of a copy.
+        symfony.install-assets-symlink .. same as install-assets with symlink instead of a copy,
+        symfony.search-environments ..... search all the available symfony environments.
         </echo>
         
         <echo>Optionals parameters
