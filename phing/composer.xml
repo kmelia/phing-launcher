@@ -18,7 +18,7 @@
     
     <target name="composer.run-command" depends="composer.check-properties, composer.get-latest, composer.github_oauth_token" hidden="true">
         <phingcall target="composer.run-simple-command">
-            <property name="composer.command-line" value="${composer.command-line} --working-dir=${composer.directory} ${composer.parameters}" override="true" />
+            <property name="composer.command-line" value="${composer.command-line} --no-interaction --working-dir=${composer.directory} ${composer.parameters}" override="true" />
         </phingcall>
     </target>
     
