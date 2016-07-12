@@ -17,6 +17,13 @@
             </then>
         </if>
         
+        <if>
+            <isset property="phpunit.prepare-data-target" />
+            <then>
+                <phingcall target="${phpunit.prepare-data-target}" />
+            </then>
+        </if>
+        
         <phingcall target="phing.run-command">
             <property name="phing.command-line" value="env ${phpunit.bin-directory}/phpunit -c ${phpunit.configuration-directory} ${phpunit.parameters}" />
         </phingcall>
