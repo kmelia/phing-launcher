@@ -57,7 +57,7 @@ showTheHelpAndExit() {
 }
 
 # read the "bin-dir" configuration setting in composer.json
-composerBinDirectory=$(cat composer.json | sed 's/[" ]//g' | grep "config:" -A2 | grep "bin-dir:" | cut -d":" -f2)
+composerBinDirectory=$(cat composer.json 2> /dev/null | sed 's/[" ]//g' | grep "config:" -A2 | grep "bin-dir:" | cut -d":" -f2)
 if [ ! -z "$composerBinDirectory" ]
 then
     showMessage "reading the "bin-dir" configuration setting in composer.json: $composerBinDirectory" "debug"
