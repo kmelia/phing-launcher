@@ -1,57 +1,21 @@
 #!/usr/bin/env sh
 
-# log message
-traceLogFile=$(dirname $0)/trace.log
-errorLogFile=$(dirname $0)/error.log
-
 # paths
-phingWithComposer=vendor/composer/my_bin-directory/phing
+testsDirectory=$(dirname $0)
+vendorComposer=vendor
+phingWithComposer=$vendorComposer/composer/my_bin-directory/phing
 phingWithPhar=phing.phar
 
-cleanupLogFile() {
-    if [ -f $traceLogFile ]
-    then
-        rm $traceLogFile
-    fi
-    
-    if [ -f $errorLogFile ]
-    then
-        rm $errorLogFile
-    fi
-}
+# log message
+traceLogFile=$testsDirectory/trace.log
+errorLogFile=$testsDirectory/error.log
 
-exitOnFail() {
-    message=$1
-    
-    echo "[failed] $message"
-    echo 
-    
-    if [ -s $traceLogFile ]
-    then
-        echo "[stdout] the trace log is shown below:"
-        echo "--------------------------------------"
-        cat $traceLogFile
-        echo 
-    fi
-    
-    if [ -s $errorLogFile ]
-    then
-        echo "[stderr] the error log is shown below:"
-        echo "--------------------------------------"
-        cat $errorLogFile
-        echo 
-    fi
-    
-    exit 1
-}
+# get the functions
+. $testsDirectory/functions.sh
 
-echo "Launch test suite:"
-
-cleanupLogFile
-. $(dirname $0)/phing-launcher/test-install.sh
-cleanupLogFile
-. $(dirname $0)/phing-launcher/test-file-mode.sh
-cleanupLogFile
-. $(dirname $0)/phing-launcher/test-environment-variable.sh
+# testsuites
+launchTestSuite install "Installing and downloading Phing"
+launchTestSuite file-mode "File mode"
+launchTestSuite environment-variable "Environment variables"
 
 exit 0

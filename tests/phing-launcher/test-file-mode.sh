@@ -1,14 +1,17 @@
 #!/usr/bin/env sh
 
-echo "[start] Test file mode ..."
+runPhingLauncher composer.install
 
 chmod -x $phingWithComposer
 
-./phing.sh -logger phing.listener.DefaultLogger >> $traceLogFile 2>> $errorLogFile
+if [ -x $phingWithComposer ]
+then
+    exitOnFail "Unable to unset executable mode on $phingWithComposer."
+fi
+
+runPhingLauncher
 
 if [ ! -x $phingWithComposer ]
 then
-    exitOnFail "Unable to use $phingWithComposer without executable mode"
+    exitOnFail "Unable to set executable mode on $phingWithComposer."
 fi
-
-echo "[end] OK"

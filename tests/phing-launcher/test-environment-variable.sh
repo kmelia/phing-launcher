@@ -1,29 +1,21 @@
 #!/usr/bin/env sh
 
-echo "[start] Test environment variable ..."
+runPhingLauncher composer.install
 
-if [ ! -z "$COMPOSER_BIN_DIR" ]
+export COMPOSER_BIN_DIR=$vendorComposer/composer/my_bin-directory
+
+runPhingLauncher
+
+if [ -f $phingWithPhar ]
 then
-    exitOnFail "Unable to test if COMPOSER_BIN_DIR  is already exported."
+    exitOnFail "Unable to set a valid directory from COMPOSER_BIN_DIR."
 fi
 
-if [ -s $phingWithPhar ]
+export COMPOSER_BIN_DIR=$vendorComposer/invalid_environment_bin-directory
+
+runPhingLauncher
+
+if [ ! -f $phingWithPhar ]
 then
-    exitOnFail "Unable to test if $phingWithPhar is already here."
+    exitOnFail "Unable to detect an invalid directory from COMPOSER_BIN_DIR."
 fi
-
-export COMPOSER_BIN_DIR=invalid_environment_bin-directory
-
-if [ -z "$COMPOSER_BIN_DIR" ]
-then
-    exitOnFail "Unable to export COMPOSER_BIN_DIR."
-fi
-
-./phing.sh -logger phing.listener.DefaultLogger >> $traceLogFile 2>> $errorLogFile
-
-if [ ! -s $phingWithPhar ]
-then
-    exitOnFail "Unable to get $phingWithPhar on curl download."
-fi
-
-echo "[end] OK"
