@@ -56,6 +56,20 @@ showTheHelpAndExit() {
     exec $phing
 }
 
+if ! php -v > /dev/null 2>&1
+then
+    showMessage "Unable to find PHP." "error"
+    showMessage "Try: apt-get install php"
+    exit 1
+fi
+
+if ! php -m | grep xmlreader > /dev/null
+then
+    showMessage "Unable to find the XML module for PHP." "error"
+    showMessage "Try: apt-get install php-xml"
+    exit 1
+fi
+
 # read the "bin-dir" configuration setting in composer.json
 composerBinDirectory=$(cat composer.json 2> /dev/null | sed 's/[" ]//g' | grep "config:" -A2 | grep "bin-dir:" | cut -d":" -f2)
 if [ ! -z "$composerBinDirectory" ]
