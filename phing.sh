@@ -56,8 +56,22 @@ showTheHelpAndExit() {
     exec $phing
 }
 
+if ! php -v > /dev/null 2>&1
+then
+    showMessage "Unable to find PHP." "error"
+    showMessage "Try: apt-get install php"
+    exit 1
+fi
+
+if ! php -m | grep xmlreader > /dev/null
+then
+    showMessage "Unable to find the XML module for PHP." "error"
+    showMessage "Try: apt-get install php-xml"
+    exit 1
+fi
+
 # read the "bin-dir" configuration setting in composer.json
-composerBinDirectory=$(cat composer.json | sed 's/[" ]//g' | grep "config:" -A2 | grep "bin-dir:" | cut -d":" -f2)
+composerBinDirectory=$(cat composer.json 2> /dev/null | sed 's/[" ]//g' | grep "config:" -A2 | grep "bin-dir:" | cut -d":" -f2)
 if [ ! -z "$composerBinDirectory" ]
 then
     showMessage "reading the "bin-dir" configuration setting in composer.json: $composerBinDirectory" "debug"
@@ -89,7 +103,11 @@ then
     then
         if ! php $temporaryPhing > /dev/null
         then
-            showMessage "removing invalid file $temporaryPhing (broken phar)"
+            showMessage "removing invalid file $temporaryPhing (broken PHP phar)"
+            rm $temporaryPhing
+        elif ! head -1 $temporaryPhing | grep php > /dev/null
+        then
+            showMessage "removing invalid file $temporaryPhing (not a PHP phar)"
             rm $temporaryPhing
         fi
     fi
@@ -97,7 +115,7 @@ then
     if [ ! -s $temporaryPhing ]
     then
         showMessage "downloading $temporaryPhing from origin"
-        curl -sS -o $temporaryPhing http://www.phing.info/get/phing-latest.phar
+        curl -L -sS -o $temporaryPhing http://www.phing.info/get/phing-latest.phar
         if [ ! -s $temporaryPhing ]
         then
             showMessage "Unable to download the file." "error"
