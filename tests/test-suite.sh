@@ -15,6 +15,7 @@ errorLogFile=$testsDirectory/error.log
 
 # testsuites
 launchTestSuite install "Installing and downloading Phing"
+launchTestSuite invalid-phar-file "Reseting Phing phar"
 launchTestSuite file-mode "File mode"
 launchTestSuite environment-variable "Environment variables"
 

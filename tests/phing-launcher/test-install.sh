@@ -1,12 +1,5 @@
 #!/usr/bin/env sh
 
-touch $phingWithPhar
-
-if [ ! -f $phingWithPhar ]
-then
-    exitOnFail "Unable to create empty $phingWithPhar file."
-fi
-
 mkdir -p $(dirname $phingWithComposer)
 touch $phingWithComposer
 
@@ -27,7 +20,7 @@ then
     exitOnFail "Unable to get $phingWithComposer on Composer."
 fi
 
-runPhingLauncher composer.install
+runPhingLauncher
 
 if [ -f $phingWithPhar ]
 then

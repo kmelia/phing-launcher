@@ -103,7 +103,11 @@ then
     then
         if ! php $temporaryPhing > /dev/null
         then
-            showMessage "removing invalid file $temporaryPhing (broken phar)"
+            showMessage "removing invalid file $temporaryPhing (broken PHP phar)"
+            rm $temporaryPhing
+        elif ! head -1 $temporaryPhing | grep php > /dev/null
+        then
+            showMessage "removing invalid file $temporaryPhing (not a PHP phar)"
             rm $temporaryPhing
         fi
     fi
