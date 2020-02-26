@@ -1,6 +1,6 @@
 Phing Launcher
 ==============
-[![Build Status](https://travis-ci.org/kmelia/phing-launcher.svg)](https://travis-ci.org/kmelia/phing-launcher)
+[![Build Status](https://travis-ci.org/maxime-pasquier/phing-launcher.svg)](https://travis-ci.org/maxime-pasquier/phing-launcher)
 
 **Provides a [launcher][1] to run [Phing][2] without Phing.** 
 
@@ -35,7 +35,7 @@ Getting started
 
 **2.** Download the [Phing Launcher script][4] into your project (near ``composer.json``).
 ```bash
-curl -sS -O https://bitbucket.org/kmelia/phing-launcher/raw/master/phing.sh
+curl -sS -O https://bitbucket.org/maxime-pasquier/phing-launcher/raw/master/phing.sh
 ```
 
 **3.** Run the Phing Launcher script instead of Phing.
@@ -57,11 +57,11 @@ Run the following command to download the classics configurations and the [``bui
 ./phing.sh get-the-classics
 ```
 
-  [1]: https://bitbucket.org/kmelia/phing-launcher
+  [1]: https://bitbucket.org/maxime-pasquier/phing-launcher
   [2]: http://www.phing.info/
   [3]: https://getcomposer.org/
-  [4]: https://bitbucket.org/kmelia/phing-launcher/raw/master/phing.sh
-  [5]: https://bitbucket.org/kmelia/phing-launcher/raw/master/phing/
-  [6]: https://bitbucket.org/kmelia/fresh-symfony
-  [7]: https://bitbucket.org/kmelia/phing-launcher/src/master/build.xml
+  [4]: https://bitbucket.org/maxime-pasquier/phing-launcher/raw/master/phing.sh
+  [5]: https://bitbucket.org/maxime-pasquier/phing-launcher/raw/master/phing/
+  [6]: https://bitbucket.org/maxime-pasquier/fresh-symfony
+  [7]: https://bitbucket.org/maxime-pasquier/phing-launcher/src/master/build.xml
   [8]: https://getcomposer.org/doc/articles/vendor-binaries.md#can-vendor-binaries-be-installed-somewhere-other-than-vendor-bin-

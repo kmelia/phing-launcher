@@ -3,7 +3,7 @@
 # configuration
 phing=vendor/bin/phing
 temporaryPhing=phing.phar
-repositoryUrl=https://bitbucket.org/kmelia/phing-launcher
+repositoryUrl=https://bitbucket.org/maxime-pasquier/phing-launcher
 configurationDirectory=phing
 phingLauncher=phing.sh
 
@@ -25,12 +25,12 @@ fi
 showMessage() {
     message=$1
     level=$2
-    
+
     if [ -z "$level" ]
     then
         level=" info"
     fi
-    
+
     if $quiet
     then
         if [ "$level" != "error" ]
@@ -38,7 +38,7 @@ showMessage() {
             return
         fi
     fi
-    
+
     if [ "$level" = "debug" ]
     then
         if ! $debug
@@ -46,13 +46,13 @@ showMessage() {
             return
         fi
     fi
-    
+
     printf "$level > $message\n"
 }
 
 showTheHelpAndExit() {
     showMessage "enjoy Phing! See the help below:\n"
-    
+
     exec $phing
 }
 
@@ -75,7 +75,7 @@ composerBinDirectory=$(cat composer.json 2> /dev/null | sed 's/[" ]//g' | grep "
 if [ ! -z "$composerBinDirectory" ]
 then
     showMessage "reading the "bin-dir" configuration setting in composer.json: $composerBinDirectory" "debug"
-fi 
+fi
 
 # read the COMPOSER_BIN_DIR environment variable
 if [ ! -z "$COMPOSER_BIN_DIR" ]
@@ -98,7 +98,7 @@ then
         showMessage "removing invalid file $phing (size equals zero)"
         rm $phing
     fi
-    
+
     if [ -s $temporaryPhing ]
     then
         if ! php $temporaryPhing > /dev/null
@@ -111,7 +111,7 @@ then
             rm $temporaryPhing
         fi
     fi
-    
+
     if [ ! -s $temporaryPhing ]
     then
         showMessage "downloading $temporaryPhing from origin"
@@ -122,7 +122,7 @@ then
             exit 1
         fi
     fi
-    
+
     showMessage "using $temporaryPhing instead of $phing"
     phing="php $temporaryPhing"
 else
@@ -131,7 +131,7 @@ else
         showMessage "adding executable mode to $phing"
         chmod +x $phing
     fi
-    
+
     if [ -f $temporaryPhing ]
     then
         showMessage "removing $temporaryPhing, phing already exists in $phing"
@@ -142,12 +142,12 @@ fi
 if [ "$1" = "get-the-classics" -o "$1" = "gtc" ]
 then
     showMessage "getting the classics of Phing Launcher from the repository $repositoryUrl"
-    
+
     if [ ! -d $configurationDirectory ]
     then
         mkdir $configurationDirectory
     fi
-    
+
     curl -sS -O $repositoryUrl/raw/master/build.xml \
         && cd $configurationDirectory \
         && curl -sS -O $repositoryUrl/raw/master/$configurationDirectory/composer.xml \
@@ -156,16 +156,16 @@ then
         && curl -sS -O $repositoryUrl/raw/master/$configurationDirectory/phpunit.xml \
         && curl -sS -O $repositoryUrl/raw/master/$configurationDirectory/symfony.xml \
         && cd - > /dev/null
-    
+
     showTheHelpAndExit
 fi
 
 if [ "$1" = "self-update" -o "$1" = "selfupdate" -o "$1" = "su" ]
 then
     showMessage "updating the Phing Launcher script from the repository $repositoryUrl"
-    
+
     curl -sS -O $repositoryUrl/raw/master/$phingLauncher
-    
+
     showTheHelpAndExit
 fi
 
