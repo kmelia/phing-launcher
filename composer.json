@@ -1,20 +1,17 @@
 {
-    "name": "kmelia/phing-launcher",
+    "name": "maxime-pasquier/phing-launcher",
     "description": "Provides a launcher to run Phing without Phing.",
     "keywords": ["phing", "phing-launcher", "composer"],
-    "homepage": "https://bitbucket.org/kmelia/phing-launcher",
+    "homepage": "https://bitbucket.org/maxime-pasquier/phing-launcher",
     "license": "GPL-3.0+",
     "authors": [
         {
             "name": "Maxime Pasquier",
-            "homepage": "https://bitbucket.org/kmelia",
+            "homepage": "https://bitbucket.org/maxime-pasquier/",
             "role": "Developer"
         }
     ],
     "require": {
         "phing/phing": "2.*"
-    },
-    "config": {
-        "bin-dir": "vendor/composer/my_bin-directory"
     }
 }
