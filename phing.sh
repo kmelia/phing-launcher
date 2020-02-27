@@ -115,7 +115,7 @@ then
     if [ ! -s $temporaryPhing ]
     then
         showMessage "downloading $temporaryPhing from origin"
-        curl -L -sS -o $temporaryPhing http://www.phing.info/get/phing-latest.phar
+        curl -L -sS -o $temporaryPhing https://www.phing.info/get/phing-latest.phar
         if [ ! -s $temporaryPhing ]
         then
             showMessage "Unable to download the file." "error"
