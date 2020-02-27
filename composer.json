@@ -13,5 +13,8 @@
     ],
     "require": {
         "phing/phing": "2.*"
+    },
+    "config": {
+        "bin-dir": "vendor/composer/my_bin-directory"
     }
 }
