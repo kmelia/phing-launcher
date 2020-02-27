@@ -4,23 +4,17 @@ exitOnFail() {
     message=$1
 
     echo
-    echo "[failed] $message"
     echo
+    echo "[error] $message"
 
     if [ -s $traceLogFile ]
     then
-        echo "[stdout] the trace log is shown below:"
-        echo "--------------------------------------"
-        cat $traceLogFile
-        echo
+        echo "[log trace] $traceLogFile"
     fi
 
     if [ -s $errorLogFile ]
     then
-        echo "[stderr] the error log is shown below:"
-        echo "--------------------------------------"
-        cat $errorLogFile
-        echo
+        echo "[log error] $errorLogFile"
     fi
 
     exit 1
